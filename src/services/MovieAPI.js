@@ -10,9 +10,7 @@ const API_KEY = "?api_key=1e529bfdc83c25eb3c6c0c142ba53ea5&language=en-US";
 const get = async (endpoint) => {
   const response = await axios.get(endpoint);
 
-  console.log(response.data);
-
-  return response.data;
+  return response.data.results;
 };
 
 //GETs the popular movies
