@@ -1,11 +1,23 @@
-import { Routes, Route } from "react-router-dom";
+import "./assets/App.scss";
 
-import "./index.css";
+import { Routes, Route } from "react-router-dom";
+import HomePage from "./pages/HomePage";
+import NotFoundPage from "./pages/NotFoundPage";
+import NavBar from "./components/NavBar";
+import PopularMoviesPage from "./pages/PopularMoviesPage";
+import { ReactQueryDevtools } from "react-query/devtools";
 
 function App() {
   return (
     <div className="App">
-      <h1 className="text-3xl font-bold underline">Hello world!</h1>
+      <NavBar />
+      <Routes>
+        <Route path="/" element={<HomePage />} />
+        <Route path="/popular_movies" element={<PopularMoviesPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+
+      <ReactQueryDevtools />
     </div>
   );
 }
