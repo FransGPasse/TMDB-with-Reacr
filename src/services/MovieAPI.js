@@ -4,7 +4,7 @@ import axios from "axios";
 axios.defaults.baseURL = "https://api.themoviedb.org/3/movie";
 
 //And this is my API key
-const API_KEY = "?api_key=1e529bfdc83c25eb3c6c0c142ba53ea5&language=en-US";
+const API_KEY = import.meta.env.VITE_API_KEY;
 
 //Standard GET request that returns the data from the response
 const get = async (endpoint) => {

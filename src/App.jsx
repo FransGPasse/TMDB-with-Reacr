@@ -6,6 +6,7 @@ import NotFoundPage from "./pages/NotFoundPage";
 import NavBar from "./components/NavBar";
 import PopularMoviesPage from "./pages/PopularMoviesPage";
 import { ReactQueryDevtools } from "react-query/devtools";
+import NowPlayingPage from "./pages/NowPlayingPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Routes>
         <Route path="/" element={<HomePage />} />
         <Route path="/popular_movies" element={<PopularMoviesPage />} />
+        <Route path="/now_playing" element={<NowPlayingPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
 
