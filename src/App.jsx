@@ -13,15 +13,17 @@ function App() {
   return (
     <div className="App">
       <NavBar />
-      <Routes>
-        <Route path="/" element={<HomePage />} />
-        <Route path="/popular_movies" element={<PopularMoviesPage />} />
-        <Route path="/now_playing" element={<NowPlayingPage />} />
-        <Route path="/movie/:id" element={<SingleMoviePage />} />
-        <Route path="*" element={<NotFoundPage />} />
-      </Routes>
+      <div className="bg-white">
+        <Routes>
+          <Route path="/" element={<HomePage />} />
+          <Route path="/popular_movies" element={<PopularMoviesPage />} />
+          <Route path="/now_playing" element={<NowPlayingPage />} />
+          <Route path="/movie/:id" element={<SingleMoviePage />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
 
-      <ReactQueryDevtools />
+        <ReactQueryDevtools />
+      </div>
     </div>
   );
 }

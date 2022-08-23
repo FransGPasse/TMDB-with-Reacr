@@ -1,3 +1,9 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;700&family=Prompt:ital,wght@0,300;0,400;1,300;1,400&family=Rubik+Puddles&display=swap");
+
+* {
+  font-family: "Open Sans", sans-serif;
+}
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
