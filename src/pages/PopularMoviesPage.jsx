@@ -19,9 +19,10 @@ const PopularMoviesPage = () => {
 
       {isError && <h2>Something went wrong...</h2>}
 
+      {/* And a generic card component with the data from the simple custom hook as props*/}
       {data && (
         <Row>
-          <PopularMoviesCard data={data} />
+          <PopularMoviesCard data={data.results} />
         </Row>
       )}
     </Container>

@@ -21,7 +21,7 @@ const NowPlayingPage = () => {
       {/* And a generic card component with the data from the simple custom hook as props*/}
       {data && (
         <Row>
-          <MoviesCard data={data} />
+          <MoviesCard data={data.results} />
         </Row>
       )}
     </Container>
