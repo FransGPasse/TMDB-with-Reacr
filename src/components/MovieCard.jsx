@@ -1,5 +1,3 @@
-import Card from "react-bootstrap/Card";
-import ListGroup from "react-bootstrap/ListGroup";
 import { Link, useParams } from "react-router-dom";
 
 const MovieCard = ({ data }) => {
@@ -12,32 +10,17 @@ const MovieCard = ({ data }) => {
   return (
     <>
       {data.map((movie) => (
-        <Link
-          to={`/movie/${movie.id}`}
-          style={{ textDecoration: "none" }}
-          key={movie.id}
-        >
-          <Card
-            className="m-2 p-2 text-white"
-            style={{ width: "40%" }}
-            bg="myBlue"
-          >
-            <Card.Img
+        <Link to={`/movie/${movie.id}`} key={movie.id}>
+          <div className="" style={{ width: "40%" }}>
+            <img
               src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
-              style={{ width: "25vw", margin: "auto" }}
-            ></Card.Img>
-            <Card.Title>{movie.title}</Card.Title>
-            <Card.Body>
-              <ListGroup variant="flush">
-                <ListGroup.Item>
-                  Average score: {movie.vote_average}
-                </ListGroup.Item>
-                <ListGroup.Item>
-                  Release date: {movie.release_date}
-                </ListGroup.Item>
-              </ListGroup>
-            </Card.Body>
-          </Card>
+            ></img>
+            <h1>{movie.title}</h1>
+            <ul>
+              <li>Average score: {movie.vote_average}</li>
+              <li>Release date: {movie.release_date}</li>
+            </ul>
+          </div>
         </Link>
       ))}
     </>

@@ -1,4 +1,4 @@
-import "./assets/App.scss";
+import "../index.css";
 
 import { Routes, Route } from "react-router-dom";
 import HomePage from "./pages/HomePage";

@@ -1,12 +1,10 @@
 import React from "react";
 
-import Container from "react-bootstrap/Container";
-
 const HomePage = () => {
   return (
-    <Container fluid="md">
+    <div>
       <h1>Welcome to The Movie Database!</h1>
-    </Container>
+    </div>
   );
 };
 

@@ -2,8 +2,6 @@ import React from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
 import usePopular from "../hooks/usePopular";
 import PopularMoviesCard from "../components/MovieCard";
-import Container from "react-bootstrap/Container";
-import Row from "react-bootstrap/Row";
 
 //The page for the 20 most popular movies, currently
 const PopularMoviesPage = () => {
@@ -21,9 +19,9 @@ const PopularMoviesPage = () => {
 
       {/* And a generic card component with the data from the simple custom hook as props*/}
       {data && (
-        <Row>
+        <div>
           <PopularMoviesCard data={data.results} />
-        </Row>
+        </div>
       )}
     </Container>
   );
