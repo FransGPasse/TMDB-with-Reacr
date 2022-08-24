@@ -61,7 +61,15 @@ const Navigation = () => {
                 <Link
                   as={NavLink}
                   end
-                  to="/now_playing"
+                  to="/genres"
+                  className="text-white transition duration-300 hover:text-cyan-300"
+                >
+                  Genres
+                </Link>
+                <Link
+                  as={NavLink}
+                  end
+                  to="/actors"
                   className="text-white transition duration-300 hover:text-cyan-300"
                 >
                   Actors

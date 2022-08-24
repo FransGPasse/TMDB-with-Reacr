@@ -9,7 +9,7 @@ import { useQuery } from "react-query";
 const SingleMoviePage = () => {
   const { id } = useParams();
 
-  //Kallar på getSingleMovie from MovieAPI
+  //Calls getSingleMovie from the API-page
   const {
     data: movie,
     isError,
@@ -26,7 +26,6 @@ const SingleMoviePage = () => {
         <div>
           <img
             src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
-            style={{ width: "40vw", margin: "auto" }}
           ></img>
 
           <h1>{movie.title}</h1>

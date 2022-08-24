@@ -1,4 +1,4 @@
-import { Link, useParams } from "react-router-dom";
+import { Link } from "react-router-dom";
 
 const MovieCard = ({ data }) => {
   if (!data.length) {
@@ -11,10 +11,11 @@ const MovieCard = ({ data }) => {
         <Link
           to={`/movie/${movie.id}`}
           key={movie.id}
-          className="bg-gray-900 max-w-xs p-3 m-4 rounded-xl transition-all duration-300 hover:-translate-y-1"
+          className="bg-gray-900 max-w-xs p-3 m-4 rounded-xl transition-all duration-300 hover:-translate-y-1 overflow-hidden"
         >
           <img
             src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
+            className="hover:scale-95 duration-300"
           ></img>
           <div className="text-white text-center">
             <h1 className="text-3xl m-2">{movie.title}</h1>

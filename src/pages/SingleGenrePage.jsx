@@ -1,11 +1,20 @@
 import React from "react";
+
 import LoadingSpinner from "../components/LoadingSpinner";
-import useNowPlaying from "../hooks/useNowPlaying";
+
+import { useParams } from "react-router-dom";
+import MovieAPI from "../services/MovieAPI";
+import { useQuery } from "react-query";
 import MovieCard from "../components/MovieCard";
 
-const NowPlayingPage = () => {
-  //Very simple custom hook that fetches the movies currently playing in theaters
-  const { data, isError, isLoading } = useNowPlaying();
+const SingleGenrePage = () => {
+  const { id } = useParams();
+
+  //Calls getSingleGenre from the API-page
+  const { data, isError, isLoading } = useQuery(
+    ["genres", id],
+    MovieAPI.getSingleGenre
+  );
 
   //Returns a container with a header
   return (
@@ -14,7 +23,6 @@ const NowPlayingPage = () => {
 
       {isError && <h2>Something went wrong...</h2>}
 
-      <h1 className="text-4xl text-center">Now playing </h1>
       <div className="grid sm:grid-cols-2 lg:grid-cols-4">
         {/* And a generic card component with the data from the simple custom hook as props*/}
         {data && <MovieCard data={data.results} />}
@@ -23,4 +31,4 @@ const NowPlayingPage = () => {
   );
 };
 
-export default NowPlayingPage;
+export default SingleGenrePage;

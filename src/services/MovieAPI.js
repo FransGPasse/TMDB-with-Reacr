@@ -6,11 +6,14 @@ axios.defaults.baseURL = "https://api.themoviedb.org/3";
 //And this is my API key
 const API_KEY = import.meta.env.VITE_API_KEY;
 
-//String for more information for every request
-const moreInfo = "&append_to_response";
-
 //String to exclude adult content
 const noAdult = "&include_adult=false";
+
+//String to get actor credits with the single movie-request
+const moreInfo = "&append_to_response";
+
+//String to get genres with the discover movies-request
+const withGenres = "&with_genres";
 
 //Standard GET request that returns the data from the response
 const get = async (endpoint) => {
@@ -38,10 +41,25 @@ const getSingleMovie = ({ queryKey }) => {
   );
 };
 
+//GETs the movies currently showing at the cinema
+const getMovieGenres = () => {
+  return get(`${axios.defaults.baseURL}/genre/movie/list${API_KEY}${noAdult}`);
+};
+
+const getSingleGenre = ({ queryKey }) => {
+  const [_key, id] = queryKey;
+
+  return get(
+    `${axios.defaults.baseURL}/discover/movie${API_KEY}${noAdult}${withGenres}=${id}`
+  );
+};
+
 const exports = {
   getPopularMovies,
   getNowPlaying,
   getSingleMovie,
+  getMovieGenres,
+  getSingleGenre,
 };
 
 export default exports;
