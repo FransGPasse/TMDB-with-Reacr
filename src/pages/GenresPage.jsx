@@ -1,5 +1,5 @@
 import React from "react";
-import Button from "../components/Button";
+import GenreButton from "../components/GenreButton";
 import LoadingSpinner from "../components/LoadingSpinner";
 import useGenres from "../hooks/useGenres";
 
@@ -16,7 +16,7 @@ const GenresPage = () => {
       {isError && <h2>Something went wrong...</h2>}
 
       {/* Buttons for every genre */}
-      {data && <Button data={data.genres} />}
+      {data && <GenreButton data={data.genres} />}
     </div>
   );
 };

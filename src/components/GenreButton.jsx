@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const Button = ({ data }) => {
+const GenreButton = ({ data }) => {
   return (
     <div className="grid xs:grid-cols-2 md:grid-cols-3">
       {data.map((genre) => (
@@ -17,4 +17,4 @@ const Button = ({ data }) => {
   );
 };
 
-export default Button;
+export default GenreButton;

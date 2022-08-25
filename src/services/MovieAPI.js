@@ -32,6 +32,11 @@ const getNowPlaying = () => {
   return get(`${axios.defaults.baseURL}/movie/now_playing${API_KEY}${noAdult}`);
 };
 
+//GETs the movies currently showing at the cinema
+const getTopRated = () => {
+  return get(`${axios.defaults.baseURL}/movie/top_rated${API_KEY}${noAdult}`);
+};
+
 //GETs the movie with the corresponding ID
 const getSingleMovie = ({ queryKey }) => {
   const [_key, id] = queryKey;
@@ -57,6 +62,7 @@ const getSingleGenre = ({ queryKey }) => {
 const exports = {
   getPopularMovies,
   getNowPlaying,
+  getTopRated,
   getSingleMovie,
   getMovieGenres,
   getSingleGenre,

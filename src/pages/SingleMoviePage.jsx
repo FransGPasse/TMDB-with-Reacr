@@ -23,34 +23,46 @@ const SingleMoviePage = () => {
       {isLoading && <LoadingSpinner />}
 
       {movie && (
-        <div>
-          <img
-            src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
-          ></img>
+        <div className="flex flex-col text-white text-center">
+          <div className="bg-gray-900 p-2 m-2 rounded-2xl">
+            <h1 className="text-4xl m-4">{movie.title}</h1>
 
-          <h1>{movie.title}</h1>
-          <h3>Original title: {movie.original_title}</h3>
-          <h3>Release date: {movie.release_date}</h3>
-          <ul>
-            Genres:
-            {movie.genres.map((genre) => (
-              <li key={genre.id}>{genre.name}</li>
-            ))}
-          </ul>
-
-          {/* Actors */}
-
-          {movie.credits.cast.map((actor) => (
-            <div key={actor.id}>
+            <div className="overflow-hidden">
               <img
-                src={"https://image.tmdb.org/t/p/w500" + actor.profile_path}
-                style={{ width: "10vw", margin: "auto" }}
+                src={"https://image.tmdb.org/t/p/w500" + movie.poster_path}
+                className="m-auto max-w-xs lg:max-w-md transition-all duration-300 hover:scale-105"
               ></img>
-              <h3>
-                {actor.name} as {actor.character}
-              </h3>
             </div>
-          ))}
+            <p className="p-5 italic text-white/80 hover:text-white transition-all duration-300 hover:cursor-default">
+              "{movie.overview}"
+            </p>
+
+            <ul className="space-y-5 p-3">
+              <li>
+                Original title:{" "}
+                <span className="italic">{movie.original_title}</span>
+              </li>
+              <li>Release date: {movie.release_date}</li>
+              <p>Genres:</p>
+              {movie.genres.map((genre) => (
+                <li key={genre.id}>{genre.name}</li>
+              ))}
+            </ul>
+
+            {/* Actors */}
+
+            {movie.credits.cast.map((actor) => (
+              <div key={actor.id}>
+                <img
+                  src={"https://image.tmdb.org/t/p/w500" + actor.profile_path}
+                  style={{ width: "10vw", margin: "auto" }}
+                ></img>
+                <h3>
+                  {actor.name} as {actor.character}
+                </h3>
+              </div>
+            ))}
+          </div>
         </div>
       )}
     </>
