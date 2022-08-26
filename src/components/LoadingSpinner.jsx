@@ -1,9 +1,13 @@
-import BeatLoader from "react-spinners/BeatLoader";
+import ClimbingBoxLoader from "react-spinners/ClimbingBoxLoader";
 
 const LoadingSpinner = () => {
   return (
-    <div className="flex justify-center py-5">
-      <BeatLoader size={20} color="#282877" />
+    <div className="flex items-center justify-center mt-20">
+      <ClimbingBoxLoader
+        size={25}
+        color="#4dd0e1
+"
+      />
     </div>
   );
 };

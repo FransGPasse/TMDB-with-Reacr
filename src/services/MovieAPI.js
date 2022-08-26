@@ -22,9 +22,12 @@ const get = async (endpoint) => {
   return response.data;
 };
 
-//GETs the popular movies
-const getPopularMovies = () => {
-  return get(`${axios.defaults.baseURL}/movie/popular${API_KEY}${noAdult}`);
+//GETs the popular movies and sets a variable for the page number
+const getPopularMovies = ({ queryKey }) => {
+  const [_key, { page }] = queryKey;
+  return get(
+    `${axios.defaults.baseURL}/movie/popular${API_KEY}&page=${page}${noAdult}`
+  );
 };
 
 //GETs the movies currently showing at the cinema
@@ -32,7 +35,7 @@ const getNowPlaying = () => {
   return get(`${axios.defaults.baseURL}/movie/now_playing${API_KEY}${noAdult}`);
 };
 
-//GETs the movies currently showing at the cinema
+//GETs the top rated movies
 const getTopRated = () => {
   return get(`${axios.defaults.baseURL}/movie/top_rated${API_KEY}${noAdult}`);
 };
@@ -46,11 +49,12 @@ const getSingleMovie = ({ queryKey }) => {
   );
 };
 
-//GETs the movies currently showing at the cinema
+//GETs a list of movie genres
 const getMovieGenres = () => {
   return get(`${axios.defaults.baseURL}/genre/movie/list${API_KEY}${noAdult}`);
 };
 
+//GETs the films tagged with a specific genre
 const getSingleGenre = ({ queryKey }) => {
   const [_key, id] = queryKey;
 

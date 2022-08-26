@@ -1,21 +1,27 @@
 import React from "react";
 import LoadingSpinner from "../components/LoadingSpinner";
-import usePopular from "../hooks/usePopular";
 import MovieCard from "../components/MovieCard";
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
+import MovieAPI from "../services/MovieAPI";
+import { useQuery } from "react-query";
+import Pagination from "../components/Pagination";
 
-//The page for the 20 most popular movies, currently
 const PopularMoviesPage = () => {
-  //Very simple custom hook that fetches the movies
-  const { data, isError, isLoading } = usePopular();
+  /* Uses searchParams to set the default page to 1 */
+  const [searchParams, setSearchParams] = useSearchParams({ page: 1 });
+  /* Sets the variable "page" to the page from searchParams */
+  const page = searchParams.get("page");
 
-  //Returns a container with a header
+  /* Calls the getPopularMovies function from the Movie API and sets the query key as popular and the page to the afformentioned page variable */
+  const { data, isSuccess, isError, isLoading } = useQuery(
+    ["popular", { page }],
+    MovieAPI.getPopularMovies
+  );
+
+  //Returns a container with a three buttons to choose between filters
   return (
     <div className="flex flex-col items-center justify-center mt-2">
-      {isLoading && <LoadingSpinner />}
-
-      {isError && <h2>Something went wrong...</h2>}
-
       <div className="flex space-x-4 m-auto">
         <Link
           as={NavLink}
@@ -37,10 +43,35 @@ const PopularMoviesPage = () => {
           Top rated
         </Link>
       </div>
+
+      {/* Adding a loading animation from React spinners*/}
+      {isLoading && <LoadingSpinner />}
+
+      {isError && (
+        <h2 className="text-3xl text-gray-800 mt-16">
+          Something went wrong...
+        </h2>
+      )}
+
       <div className="grid sm:grid-cols-2 lg:grid-cols-4">
-        {/* And a generic card component with the data from the simple custom hook as props*/}
-        {data && <MovieCard data={data.results} />}
+        {/* And renders a generic card component with the data from the simple custom hook as props when we receive the isSuccess-callback function */}
+        {isSuccess && (
+          <MovieCard
+            data={data.results}
+            page={page}
+            handlePage={setSearchParams}
+          />
+        )}
       </div>
+
+      {/* Pagination that receives props from the data in the response */}
+      {isSuccess && (
+        <Pagination
+          page={page}
+          totalPages={data.total_pages}
+          turnPage={setSearchParams}
+        ></Pagination>
+      )}
     </div>
   );
 };
