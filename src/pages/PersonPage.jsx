@@ -59,7 +59,9 @@ const SingleMoviePage = () => {
                     }
                     className="m-auto w-max"
                   ></img>
-                  <h2>{credit.title}</h2>
+                  <h2>
+                    As {credit.character} in {credit.title}
+                  </h2>
                 </div>
               </Link>
             ))}
