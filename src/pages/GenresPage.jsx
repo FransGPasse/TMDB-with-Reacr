@@ -1,6 +1,7 @@
 import React from "react";
 import GenreButton from "../components/GenreButton";
 import LoadingSpinner from "../components/LoadingSpinner";
+import Pagination from "../components/Pagination";
 import useGenres from "../hooks/useGenres";
 
 const GenresPage = () => {

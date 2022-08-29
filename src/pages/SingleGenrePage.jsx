@@ -2,17 +2,24 @@ import React from "react";
 
 import LoadingSpinner from "../components/LoadingSpinner";
 
-import { useParams } from "react-router-dom";
+import { useSearchParams, useParams } from "react-router-dom";
 import MovieAPI from "../services/MovieAPI";
 import { useQuery } from "react-query";
 import MovieCard from "../components/MovieCard";
+import Pagination from "../components/Pagination";
 
 const SingleGenrePage = () => {
+  /* Finds the ID from the URL */
   const { id } = useParams();
 
+  /* Uses searchParams to set the default page to 1 */
+  const [searchParams, setSearchParams] = useSearchParams({ page: 1 });
+  /* Sets the variable "page" to the page from searchParams */
+  const page = searchParams.get("page");
+
   //Calls getSingleGenre from the API-page
-  const { data, isError, isLoading } = useQuery(
-    ["genres", id],
+  const { data, isSuccess, isError, isLoading } = useQuery(
+    ["genres", page, id],
     MovieAPI.getSingleGenre
   );
 
@@ -27,6 +34,15 @@ const SingleGenrePage = () => {
         {/* And a generic card component with the data from the simple custom hook as props*/}
         {data && <MovieCard data={data.results} />}
       </div>
+
+      {/* Pagination that receives props from the data in the response */}
+      {isSuccess && (
+        <Pagination
+          page={page}
+          totalPages={data.total_pages}
+          turnPage={setSearchParams}
+        ></Pagination>
+      )}
     </div>
   );
 };

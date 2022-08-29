@@ -64,10 +64,19 @@ const getMovieGenres = () => {
 
 //GETs the films tagged with a specific genre
 const getSingleGenre = ({ queryKey }) => {
+  const [_key, page, id] = queryKey;
+
+  return get(
+    `${axios.defaults.baseURL}/discover/movie?api_key=${API_KEY}&page=${page}${noAdult}${withGenres}=${id}`
+  );
+};
+
+//GETs the films tagged with a specific genre
+const getSingleActor = ({ queryKey }) => {
   const [_key, id] = queryKey;
 
   return get(
-    `${axios.defaults.baseURL}/discover/movie?api_key=${API_KEY}${noAdult}${withGenres}=${id}`
+    `${axios.defaults.baseURL}/person/${id}?api_key=${API_KEY}${noAdult}${moreInfo}=movie_credits`
   );
 };
 
@@ -78,6 +87,7 @@ const exports = {
   getSingleMovie,
   getMovieGenres,
   getSingleGenre,
+  getSingleActor,
 };
 
 export default exports;

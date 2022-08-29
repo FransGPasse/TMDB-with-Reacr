@@ -66,14 +66,6 @@ const Navigation = () => {
                 >
                   Genres
                 </Link>
-                <Link
-                  as={NavLink}
-                  end
-                  to="/actors"
-                  className="text-white transition duration-300 hover:text-cyan-300"
-                >
-                  Actors
-                </Link>
               </div>
             </nav>
           </div>
