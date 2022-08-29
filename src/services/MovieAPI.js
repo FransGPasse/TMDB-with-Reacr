@@ -71,8 +71,8 @@ const getSingleGenre = ({ queryKey }) => {
   );
 };
 
-//GETs the films tagged with a specific genre
-const getSingleActor = ({ queryKey }) => {
+//GETs a single actor/acress and their credits
+const getSinglePerson = ({ queryKey }) => {
   const [_key, id] = queryKey;
 
   return get(
@@ -87,7 +87,7 @@ const exports = {
   getSingleMovie,
   getMovieGenres,
   getSingleGenre,
-  getSingleActor,
+  getSinglePerson,
 };
 
 export default exports;

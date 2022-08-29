@@ -23,10 +23,6 @@ const TopRatedPage = () => {
   //Returns a container with a header
   return (
     <div className="flex flex-col items-center justify-center mt-2">
-      {isLoading && <LoadingSpinner />}
-
-      {isError && <h2>Something went wrong...</h2>}
-
       <div className="flex space-x-4 m-auto">
         <Link
           as={NavLink}
@@ -48,6 +44,15 @@ const TopRatedPage = () => {
           Top rated
         </p>
       </div>
+
+      {isLoading && <LoadingSpinner />}
+
+      {isError && (
+        <h2 className="text-3xl text-gray-800 mt-16">
+          Something went wrong...
+        </h2>
+      )}
+
       <div className="grid sm:grid-cols-2 lg:grid-cols-4">
         {/* And a generic card component with the data from the simple custom hook as props*/}
         {isSuccess && <MovieCard data={data.results} />}

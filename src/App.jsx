@@ -12,6 +12,7 @@ import SingleMoviePage from "./pages/SingleMoviePage";
 import GenresPage from "./pages/GenresPage";
 import SingleGenrePage from "./pages/SingleGenrePage";
 import TopRatedPage from "./pages/TopRatedPage";
+import PersonPage from "./pages/PersonPage";
 
 function App() {
   return (
@@ -32,6 +33,9 @@ function App() {
           {/* Genre paths */}
           <Route path="/genres" element={<GenresPage />} />
           <Route path="/genres/:id" element={<SingleGenrePage />} />
+
+          {/* Actor paths */}
+          <Route path="/person/:id" element={<PersonPage />} />
 
           {/* Not found page */}
           <Route path="*" element={<NotFoundPage />} />

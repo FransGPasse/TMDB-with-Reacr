@@ -14,25 +14,30 @@ const SingleGenrePage = () => {
 
   /* Uses searchParams to set the default page to 1 */
   const [searchParams, setSearchParams] = useSearchParams({ page: 1 });
+
   /* Sets the variable "page" to the page from searchParams */
   const page = searchParams.get("page");
 
-  //Calls getSingleGenre from the API-page
+  /*   Calls getSingleGenre from the API-page */
   const { data, isSuccess, isError, isLoading } = useQuery(
     ["genres", page, id],
     MovieAPI.getSingleGenre
   );
 
-  //Returns a container with a header
+  /* Returns a container with a header */
   return (
     <div className="flex flex-col items-center justify-center">
       {isLoading && <LoadingSpinner />}
 
-      {isError && <h2>Something went wrong...</h2>}
+      {isError && (
+        <h2 className="text-3xl text-gray-800 mt-16">
+          Something went wrong...
+        </h2>
+      )}
 
       <div className="grid sm:grid-cols-2 lg:grid-cols-4">
         {/* And a generic card component with the data from the simple custom hook as props*/}
-        {data && <MovieCard data={data.results} />}
+        {isSuccess && <MovieCard data={data.results} />}
       </div>
 
       {/* Pagination that receives props from the data in the response */}
