@@ -13,7 +13,7 @@ const NowPlayingPage = () => {
   /* Sets the variable "page" to the page from searchParams */
   const page = searchParams.get("page");
 
-  /* Calls the getNowPlaying function from the Movie API and sets the query key as popular and the page to the afformentioned page variable */
+  /* Calls the getNowPlaying function from the Movie API and sets the query key as now_playing and the page to the afformentioned page variable */
   const { data, isSuccess, isError, isLoading } = useQuery(
     ["now_playing", { page }],
     MovieAPI.getNowPlaying

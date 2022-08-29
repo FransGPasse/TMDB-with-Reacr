@@ -14,7 +14,7 @@ const TopRatedPage = () => {
   /* Sets the variable "page" to the page from searchParams */
   const page = searchParams.get("page");
 
-  /* Calls the getTopRated function from the Movie API and sets the query key as popular and the page to the afformentioned page variable */
+  /* Calls the getTopRated function from the Movie API and sets the query key as top_rated and the page to the afformentioned page variable */
   const { data, isSuccess, isError, isLoading } = useQuery(
     ["top_rated", { page }],
     MovieAPI.getTopRated
