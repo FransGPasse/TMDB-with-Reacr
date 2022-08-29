@@ -5,10 +5,10 @@ import useGenres from "../hooks/useGenres";
 
 const GenresPage = () => {
   //Simple custom hook to get all genres
-  const { data, isLoading, isError } = useGenres();
+  const { data, isSuccess, isLoading, isError } = useGenres();
 
   return (
-    <div className="container flex-col items-center justify-center">
+    <div className="flex-col items-center justify-center">
       <h1 className="text-4xl text-center">Genres</h1>
 
       {isLoading && <LoadingSpinner />}
@@ -16,7 +16,7 @@ const GenresPage = () => {
       {isError && <h2>Something went wrong...</h2>}
 
       {/* Buttons for every genre */}
-      {data && <GenreButton data={data.genres} />}
+      {isSuccess && <GenreButton data={data.genres} />}
     </div>
   );
 };

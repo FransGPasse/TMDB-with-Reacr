@@ -31,13 +31,19 @@ const getPopularMovies = ({ queryKey }) => {
 };
 
 //GETs the movies currently showing at the cinema
-const getNowPlaying = () => {
-  return get(`${axios.defaults.baseURL}/movie/now_playing${API_KEY}${noAdult}`);
+const getNowPlaying = ({ queryKey }) => {
+  const [_key, { page }] = queryKey;
+  return get(
+    `${axios.defaults.baseURL}/movie/now_playing${API_KEY}&page=${page}${noAdult}`
+  );
 };
 
 //GETs the top rated movies
-const getTopRated = () => {
-  return get(`${axios.defaults.baseURL}/movie/top_rated${API_KEY}${noAdult}`);
+const getTopRated = ({ queryKey }) => {
+  const [_key, { page }] = queryKey;
+  return get(
+    `${axios.defaults.baseURL}/movie/top_rated${API_KEY}&page=${page}${noAdult}`
+  );
 };
 
 //GETs the movie with the corresponding ID

@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const GenreButton = ({ data }) => {
   return (
-    <div className="grid xs:grid-cols-2 md:grid-cols-3">
+    <div className="grid justify-center place-content-center grid-cols-3 lg:grid-cols-6">
       {data.map((genre) => (
         <Link
           to={`/genres/${genre.id}`}
