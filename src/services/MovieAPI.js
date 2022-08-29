@@ -26,7 +26,7 @@ const get = async (endpoint) => {
 const getPopularMovies = ({ queryKey }) => {
   const [_key, { page }] = queryKey;
   return get(
-    `${axios.defaults.baseURL}/movie/popular${API_KEY}&page=${page}${noAdult}`
+    `${axios.defaults.baseURL}/movie/popular?api_key=${API_KEY}&page=${page}${noAdult}`
   );
 };
 
@@ -34,7 +34,7 @@ const getPopularMovies = ({ queryKey }) => {
 const getNowPlaying = ({ queryKey }) => {
   const [_key, { page }] = queryKey;
   return get(
-    `${axios.defaults.baseURL}/movie/now_playing${API_KEY}&page=${page}${noAdult}`
+    `${axios.defaults.baseURL}/movie/now_playing?api_key=${API_KEY}&page=${page}${noAdult}`
   );
 };
 
@@ -42,7 +42,7 @@ const getNowPlaying = ({ queryKey }) => {
 const getTopRated = ({ queryKey }) => {
   const [_key, { page }] = queryKey;
   return get(
-    `${axios.defaults.baseURL}/movie/top_rated${API_KEY}&page=${page}${noAdult}`
+    `${axios.defaults.baseURL}/movie/top_rated?api_key=${API_KEY}&page=${page}${noAdult}`
   );
 };
 
@@ -51,13 +51,15 @@ const getSingleMovie = ({ queryKey }) => {
   const [_key, id] = queryKey;
 
   return get(
-    `${axios.defaults.baseURL}/movie/${id}${API_KEY}${moreInfo}=credits`
+    `${axios.defaults.baseURL}/movie/${id}?api_key=${API_KEY}${moreInfo}=credits`
   );
 };
 
 //GETs a list of movie genres
 const getMovieGenres = () => {
-  return get(`${axios.defaults.baseURL}/genre/movie/list${API_KEY}${noAdult}`);
+  return get(
+    `${axios.defaults.baseURL}/genre/movie/list?api_key=${API_KEY}${noAdult}`
+  );
 };
 
 //GETs the films tagged with a specific genre
@@ -65,7 +67,7 @@ const getSingleGenre = ({ queryKey }) => {
   const [_key, id] = queryKey;
 
   return get(
-    `${axios.defaults.baseURL}/discover/movie${API_KEY}${noAdult}${withGenres}=${id}`
+    `${axios.defaults.baseURL}/discover/movie?api_key=${API_KEY}${noAdult}${withGenres}=${id}`
   );
 };
 
